@@ -5,7 +5,7 @@
     <title>My Restaurant</title>
 </head>
 <body>
-<form action="#" th:action="@{/addconfig}" th:object="${config}" method="post">
+<form action="#" th:action="@{/admin/config/edit/{id}(id=${config.id})}" th:object="${config}" method="post">
     <label for="name">Nom du restaurant : </label>
     <input type="text" th:field="*{name}" id="name" placeholder="Nom du restaurant">
     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
@@ -25,7 +25,7 @@
     <input type="file" th:field="*{photo}" id="photo">
     <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
 
-    <input type="submit" value="Add Config">
+    <input type="submit" value="Sauvegarder">
 </form>
 </body>
 </html>
