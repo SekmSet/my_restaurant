@@ -1,6 +1,7 @@
 package com.my_restaurant.my_restaurant.controller;
 
 import com.my_restaurant.my_restaurant.entity.Menu;
+import com.my_restaurant.my_restaurant.service.CarteService;
 import com.my_restaurant.my_restaurant.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
 
+    @Autowired
+    private CarteService carteService;
+
     @GetMapping("/admin/menu")
     public String showIndex(Model model) {
         var menu = menuService.findAll();
@@ -34,7 +38,9 @@ public class MenuController {
 
 
     @GetMapping("/admin/menu/ajout")
-    public String showAddMenuForm(Menu menu) {
+    public String showAddMenuForm(Menu menu, Model model) {
+        model.addAttribute("cartesList", carteService.findAll());
+
         return "admin/menu/add";
     }
 
@@ -54,6 +60,7 @@ public class MenuController {
 
         Menu menu = menuService.findById(id);
         model.addAttribute("menu", menu);
+        model.addAttribute("cartesList", carteService.findAll());
 
         return "admin/menu/update";
     }

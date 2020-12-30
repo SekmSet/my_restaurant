@@ -1,6 +1,7 @@
 package com.my_restaurant.my_restaurant.controller;
 
 import com.my_restaurant.my_restaurant.entity.Plat;
+import com.my_restaurant.my_restaurant.service.MenuService;
 import com.my_restaurant.my_restaurant.service.PlatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class PlatController {
     @Autowired
     private PlatService platService;
 
+    @Autowired
+    private MenuService menuService;
+
     @GetMapping("/admin/plat")
     public String showIndex(Model model) {
         var plat = platService.findAll();
@@ -33,7 +37,8 @@ public class PlatController {
     }
 
     @GetMapping("/admin/plat/ajout")
-    public String showAddPlatForm(Plat plat) {
+    public String showAddPlatForm(Plat plat, Model model) {
+        model.addAttribute("menuList", menuService.findAll());
         return "admin/plat/add";
     }
 
@@ -53,6 +58,7 @@ public class PlatController {
 
         Plat plat = platService.findById(id);
         model.addAttribute("plat", plat);
+        model.addAttribute("menuList", menuService.findAll());
 
         return "admin/plat/update";
     }

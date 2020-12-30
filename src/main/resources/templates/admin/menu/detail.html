@@ -12,9 +12,16 @@
                 <li><a th:href="@{/admin}">Administrateur</a></li>
             </ul>
         </header>
-        <h1 th:text="${menu.name}"></h1>
+        <h1>Detail de mon menu : <span th:text="${menu.name}"></span></h1>
+        
         <div>
             <div>Prix : <span th:text="${menu.prix}"></span></div>
+            <div>
+                <h2>Liste des plats : </h2>
+                <ul>
+                    <li th:each="plat: ${menu.plat}" th:text="${plat.name}"></li>
+                </ul>
+            </div>
          </div>
 
         <ul>

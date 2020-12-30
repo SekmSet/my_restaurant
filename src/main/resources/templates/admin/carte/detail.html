@@ -9,12 +9,15 @@
             <ul>
                 <li><a th:href="@{/}">Accueil</a></li>
 <!--                <li><a th:href="@{/carte}">Notre carte</a></li>-->
-                <li><a th:href="@{/templates/admin}">Administrateur</a></li>
+                <li><a th:href="@{/admin}">Administrateur</a></li>
             </ul>
         </header>
         <div>
-            <h1 th:text="${carte.name}"></h1>
+            <h1>Détail de ma carte : <span th:text="${carte.name}"></span></h1>
             <h2>Liste des menus : </h2>
+            <ul th:each="menu : ${carte.menu}">
+                <li th:text="${menu.name}"></li>
+            </ul>
         </div>
 
         <ul>

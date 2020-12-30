@@ -5,6 +5,9 @@
     <title>My Restaurant</title>
 </head>
 <body>
+
+<h1> Modifier mon plat : <span th:text="${plat.name}"></span></h1>
+
 <ul>
     <li><a href="https://allergies.afpral.fr/allergie/en-savoir-plus-sur-les-allergies/alimentaires/89-liste-des-14-allergenes-alimentaires-majeurs" target="_blank">Liste des alergènes</a></li>
 </ul>
@@ -26,10 +29,13 @@
     <input type="number" th:field="*{prix}" id="prix" >
     <span th:if="${#fields.hasErrors('prix')}" th:errors="*{prix}"></span>
 
-
     <label for="photo">Image pour le plat : </label>
     <input type="file" th:field="*{photo}" id="photo">
     <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
+
+    <select th:field="*{menu}" class="form-control" multiple>
+        <option th:each="menu: ${menuList}" th:value="${menu.id}" th:text="${menu.name}"></option>
+    </select>
 
     <input type="submit" value="Sauvegarder">
 </form>

@@ -7,7 +7,7 @@
 <body>
 
 <div>
-    <h1>Modifier ma carte</h1>
+    <h1>Modifier ma carte : <span th:text="${carte.name}"></span></h1>
 
     <form action="#" th:action="@{/admin/carte/update/{id}(id=${carte.id})}" th:object="${carte}" method="post">
         <label for="name">Nom de la carte : </label>

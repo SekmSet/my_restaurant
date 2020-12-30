@@ -9,10 +9,11 @@
             <ul>
                 <li><a th:href="@{/}">Accueil</a></li>
 <!--                <li><a th:href="@{/carte}">Notre carte</a></li>-->
-                <li><a th:href="@{/templates/admin}">Administrateur</a></li>
+                <li><a th:href="@{/admin}">Administrateur</a></li>
             </ul>
         </header>
-        <h1 th:text="${plat.name}"></h1>
+       <h1>  Voir mon plat : <span th:text="${plat.name}"></span></h1>
+
         <div>
             <div>Prix : <span th:text="${plat.prix}"></span></div>
             <div>Description : <span th:text="${plat.description}"></span></div>
