@@ -30,7 +30,7 @@
     <span th:if="${#fields.hasErrors('prix')}" th:errors="*{prix}"></span>
 
     <label for="photo">Image pour le plat : </label>
-    <input type="file" th:field="*{photo}" id="photo">
+    <input type="file" th:field="*{photo}" id="photo" accept="image/png, image/jpeg">
     <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
 
     <select th:field="*{menu}" class="form-control" multiple>
