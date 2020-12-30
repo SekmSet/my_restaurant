@@ -18,6 +18,11 @@ public class ConfigController {
     @Autowired
     private ConfigService configService;
 
+    @GetMapping("/admin/config")
+    public String showIndex() {
+        return "admin/config/index";
+    }
+
     @GetMapping("/admin/config/ajout")
     public String showSignUpForm(Config config) {
         return "admin/config/add";
