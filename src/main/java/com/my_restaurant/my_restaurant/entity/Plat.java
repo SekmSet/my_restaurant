@@ -1,10 +1,8 @@
 package com.my_restaurant.my_restaurant.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity
 public class Plat {
@@ -26,6 +24,9 @@ public class Plat {
 
     @NotBlank(message = "Les alergènes du plat sont requis")
     private String alergenes;
+
+    @ManyToMany(mappedBy = "plat")
+    Set<Menu> menu;
 
     public long getId() {
         return id;

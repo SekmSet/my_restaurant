@@ -1,10 +1,8 @@
 package com.my_restaurant.my_restaurant.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity
 public class Menu {
@@ -17,6 +15,13 @@ public class Menu {
 
     @NotBlank(message = "Le prix (en €) du menu est requis")
     private Integer prix;
+
+    @ManyToMany
+    @JoinTable(
+            name = "menu_plat",
+            joinColumns = @JoinColumn(name = "plat_id"),
+            inverseJoinColumns = @JoinColumn(name = "menu_id"))
+    Set<Plat> plat;
 
     public long getId() {
         return id;
