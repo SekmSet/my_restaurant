@@ -17,6 +17,10 @@
         <input type="number" th:field="*{prix}" id="prix" >
         <span th:if="${#fields.hasErrors('prix')}" th:errors="*{prix}"></span>
 
+        <select th:field="*{carte}" class="form-control" multiple>
+            <option th:each="carte: ${cartesList}" th:value="${carte.id}" th:text="${carte.name}"></option>
+        </select>
+
         <input type="submit" value="Créer">
     </form>
 </body>

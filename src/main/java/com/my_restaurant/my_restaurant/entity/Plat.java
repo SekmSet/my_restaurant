@@ -2,6 +2,7 @@ package com.my_restaurant.my_restaurant.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -25,8 +26,12 @@ public class Plat {
     @NotBlank(message = "Les alergènes du plat sont requis")
     private String alergenes;
 
-    @ManyToMany(mappedBy = "plat")
-    Set<Menu> menu;
+    @ManyToMany
+    @JoinTable(
+            name = "plat_menu",
+            joinColumns = @JoinColumn(name = "menu_id"),
+            inverseJoinColumns = @JoinColumn(name = "plat_id"))
+    Set<Menu> menu = new HashSet<>();
 
     public long getId() {
         return id;
@@ -74,5 +79,13 @@ public class Plat {
 
     public void setAlergenes(String alergenes) {
         this.alergenes = alergenes;
+    }
+
+    public Set<Menu> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Set<Menu> menu) {
+        this.menu = menu;
     }
 }

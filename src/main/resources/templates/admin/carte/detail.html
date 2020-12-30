@@ -12,17 +12,16 @@
                 <li><a th:href="@{/admin}">Administrateur</a></li>
             </ul>
         </header>
-       <h1>  Voir mon plat : <span th:text="${plat.name}"></span></h1>
-
         <div>
-            <div>Prix : <span th:text="${plat.prix}"></span></div>
-            <div>Description : <span th:text="${plat.description}"></span></div>
-            <div>Alergène : <span th:text="${plat.alergenes}"></span></div>
-            <div>Photo : <span></span></div>
+            <h1>Détail de ma carte : <span th:text="${carte.name}"></span></h1>
+            <h2>Liste des menus : </h2>
+            <ul th:each="menu : ${carte.menu}">
+                <li th:text="${menu.name}"></li>
+            </ul>
         </div>
 
         <ul>
-            <li><a th:href="@{/admin/plat}">Gêrer mes plats</a></li>
+            <li><a th:href="@{/admin/carte}">Gêrer mes cartes</a></li>
         </ul>
      </body>
 </html>
