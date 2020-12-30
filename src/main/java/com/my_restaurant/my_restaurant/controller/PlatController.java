@@ -58,7 +58,7 @@ public class PlatController {
     }
 
     @PostMapping("/admin/plat/update/{id}")
-    public String updateUser(@PathVariable("id") long id, @Valid Plat plat, BindingResult result, Model model) {
+    public String updatePlat(@PathVariable("id") long id, @Valid Plat plat, BindingResult result, Model model) {
         if (result.hasErrors()) {
             plat.setId(id);
             return "admin/plat/update";
@@ -69,7 +69,7 @@ public class PlatController {
     }
 
     @GetMapping("/admin/plat/delete/{id}")
-    public String deleteUser(@PathVariable("id") long id, Model model) {
+    public String deletePlat(@PathVariable("id") long id, Model model) {
         Plat plat = platService.findById(id);
         platService.delete(plat);
         return "redirect:/admin/plat";

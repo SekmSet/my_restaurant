@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
+    <title>My Restaurant</title>
+</head>
+<body>
+    <div>
+        <h1>Modifier mon menu</h1>
+        <form action="#" th:action="@{/admin/menu/update/{id}(id=${menu.id})}" th:object="${menu}" method="post">
+            <label for="name">Nom du menu : </label>
+            <input type="text" th:field="*{name}" id="name">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+            <label for="prix">Prix en € : </label>
+            <input type="number" th:field="*{prix}" id="prix" >
+            <span th:if="${#fields.hasErrors('prix')}" th:errors="*{prix}"></span>
+
+            <input type="submit" value="Sauvegarder">
+        </form>
+    </div>
+</body>
+</html>

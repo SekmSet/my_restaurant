@@ -18,9 +18,9 @@ public class ConfigController {
     @Autowired
     private ConfigService configService;
 
-    @GetMapping("/admin/config")
+    @GetMapping("/admin")
     public String showIndex() {
-        return "admin/config/index";
+        return "admin/index";
     }
 
     @GetMapping("/admin/config/ajout")

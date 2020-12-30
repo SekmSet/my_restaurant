@@ -14,29 +14,26 @@
         </header>
         <h1>Mon espace administrateur : plats</h1>
         <ul>
-            <li><a th:href="@{/admin/plat/ajout}">Ajouter un plat</a></li>
-            <!--                <li><a th:href="@{/carte}">Notre carte</a></li>-->
+            <li><a th:href="@{/admin/menu/ajout}">Ajouter un menu</a></li>
         </ul>
 
         <table>
             <thead>
             <tr>
                 <th>Nom</th>
-                <th>Description</th>
                 <th>Prix</th>
                 <th>Options</th>
 
             </tr>
             </thead>
             <tbody>
-            <tr th:each="plat : ${plats}">
-                <td th:text="${plat.name}"></td>
-                <td th:text="${plat.description}"></td>
-                <td th:text="${plat.prix}"></td>
+            <tr th:each="menu : ${menus}">
+                <td th:text="${menu.name}"></td>
+                <td th:text="${menu.prix}"></td>
                 <td>
-                    <a th:href="@{/admin/plat/{id}(id=${plat.id})}">Voir</a>
-                    <a th:href="@{/admin/plat/update/{id}(id=${plat.id})}">Modifier</a>
-                    <a th:href="@{/admin/plat/delete/{id}(id=${plat.id})}">Supprimer</a>
+                    <a th:href="@{/admin/menu/{id}(id=${menu.id})}">Voir</a>
+                    <a th:href="@{/admin/menu/update/{id}(id=${menu.id})}">Modifier</a>
+                    <a th:href="@{/admin/menu/delete/{id}(id=${menu.id})}">Supprimer</a>
                 </td>
             </tr>
             </tbody>

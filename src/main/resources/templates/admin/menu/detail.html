@@ -12,6 +12,13 @@
                 <li><a th:href="@{/admin}">Administrateur</a></li>
             </ul>
         </header>
-        <h1>Page d'accueil</h1>
-    </body>
+        <h1 th:text="${menu.name}"></h1>
+        <div>
+            <div>Prix : <span th:text="${menu.prix}"></span></div>
+         </div>
+
+        <ul>
+            <li><a th:href="@{/admin/menu}">Gêrer mes menus</a></li>
+        </ul>
+     </body>
 </html>
