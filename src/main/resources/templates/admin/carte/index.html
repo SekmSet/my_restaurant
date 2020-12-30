@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
+        <title>My Restaurant</title>
+    </head>
+    <body>
+        <header>
+            <ul>
+                <li><a th:href="@{/}">Accueil</a></li>
+<!--                <li><a th:href="@{/carte}">Notre carte</a></li>-->
+                <li><a th:href="@{/admin}">Administrateur</a></li>
+            </ul>
+        </header>
+        <h1>Mon espace administrateur : carte</h1>
+        <ul>
+            <li><a th:href="@{/admin/carte/ajout}">Ajouter une carte</a></li>
+        </ul>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Options</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="carte : ${cartes}">
+                <td th:text="${carte.name}"></td>
+                <td>
+                    <a th:href="@{/admin/carte/{id}(id=${carte.id})}">Voir</a>
+                    <a th:href="@{/admin/carte/update/{id}(id=${carte.id})}">Modifier</a>
+                    <a th:href="@{/admin/carte/delete/{id}(id=${carte.id})}">Supprimer</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+     </body>
+</html>

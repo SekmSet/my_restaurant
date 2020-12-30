@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
+    <title>My Restaurant</title>
+</head>
+<body>
+    <div>
+        <h1>Créer une nouvelle carte</h1>
+        <form action="#" th:action="@{/admin/carte/ajout}" th:object="${carte}" method="post">
+            <label for="name">Nom de la carte : </label>
+            <input type="text" th:field="*{name}" id="name" placeholder="Carte des desserts">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+            <input type="submit" value="Créer">
+        </form>
+    </div>
+
+</body>
+</html>
