@@ -22,6 +22,12 @@ public class AvisService {
         return avis;
     }
 
+    public List<Avis> getLast(long limit){
+        var results = avisRepository.findOrderedBySeatNumberLimitedTo(limit);
+
+        return new ArrayList<Avis>(results);
+    }
+
     public void save(Avis avis) {
         avisRepository.save(avis);
     }
