@@ -50,6 +50,14 @@
             <input type="text" th:field="*{numberFix}" id="numberFix" placeholder="0400000000">
             <span th:if="${#fields.hasErrors('numberFix')}" th:errors="*{numberFix}"></span>
 
+            <label for="liens">Couleur des liens : </label>
+            <input type="text" th:field="*{liens}" id="liens" placeholder="#ff0000">
+            <span th:if="${#fields.hasErrors('liens')}" th:errors="*{liens}"></span>
+
+            <label for="boutons">Couleurs des boutons : </label>
+            <input type="text" th:field="*{boutons}" id="boutons" placeholder="#ff0000">
+            <span th:if="${#fields.hasErrors('boutons')}" th:errors="*{boutons}"></span>
+
             <input type="submit" value="Sauvegarder">
         </form>
     </div>
