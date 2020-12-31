@@ -17,16 +17,38 @@
             <input type="text" th:field="*{url}" id="url" placeholder="monSite.fr">
             <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
 
-
             <label for="mdp">Mot de passe administrateur : </label>
             <span>Min : 8 caractères, 1 minuscule, 1 majuscule, 1 nombre</span>
             <input type="password" th:field="*{mdp}" id="mdp" >
             <span th:if="${#fields.hasErrors('mdp')}" th:errors="*{mdp}"></span>
 
-
             <label for="photo">Image pour la bannière : </label>
             <input type="file" name="image" id="photo" accept="image/png, image/jpeg">
             <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
+
+            <label for="adresse">Addresse de mon restaurant : </label>
+            <input type="text" th:field="*{adresse}" id="adresse" placeholder="11 Rue des Lilas">
+            <span th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}"></span>
+
+            <label for="ville">Ville de mon restaurant : </label>
+            <input type="text" th:field="*{ville}" id="ville" placeholder="LYON">
+            <span th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span>
+
+            <label for="cp">Code postale de mon restaurant : </label>
+            <input type="text" th:field="*{cp}" id="cp" placeholder="69002">
+            <span th:if="${#fields.hasErrors('cp')}" th:errors="*{cp}"></span>
+
+            <label for="email">Email de mon restaurant : </label>
+            <input type="text" th:field="*{email}" id="email" placeholder="mon-restaurant@gmail.com">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
+            <label for="numberPort">Numéro de portable de mon restaurant : </label>
+            <input type="text" th:field="*{numberPort}" id="numberPort" placeholder="0600000000">
+            <span th:if="${#fields.hasErrors('numberPort')}" th:errors="*{numberPort}"></span>
+
+            <label for="numberFix">Numéro fixe de mon restaurant : </label>
+            <input type="text" th:field="*{numberFix}" id="numberFix" placeholder="0400000000">
+            <span th:if="${#fields.hasErrors('numberFix')}" th:errors="*{numberFix}"></span>
 
             <input type="submit" value="Sauvegarder">
         </form>
