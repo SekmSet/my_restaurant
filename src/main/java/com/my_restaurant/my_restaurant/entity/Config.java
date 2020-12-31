@@ -32,11 +32,13 @@ public class Config {
 
      private String cp;
 
+     private String liens;
+
+     private String boutons;
+
     @NotBlank(message = "La bannière de votre site est requise")
     private String photo;
 
-    @NotBlank(message = "La configuration de votre site est requise")
-    private String config;
 
     public Config() {
 
@@ -129,13 +131,21 @@ public class Config {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-
-    public String getConfig() {
-        return config;
+    
+    public String getLiens() {
+        return liens;
     }
 
-    public void setConfig(String config) {
-        this.config = config;
+    public void setLiens(String liens) {
+        this.liens = liens;
+    }
+
+    public String getBoutons() {
+        return boutons;
+    }
+
+    public void setBoutons(String boutons) {
+        this.boutons = boutons;
     }
 
     @Transient
