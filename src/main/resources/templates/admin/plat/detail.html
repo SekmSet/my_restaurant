@@ -18,7 +18,9 @@
             <div>Prix : <span th:text="${plat.prix}"></span></div>
             <div>Description : <span th:text="${plat.description}"></span></div>
             <div>Alergène : <span th:text="${plat.alergenes}"></span></div>
-            <div>Photo : <span></span></div>
+            <div>Photo :
+                <img th:src="${plat.photosImagePath}" />
+            </div>
         </div>
 
         <ul>

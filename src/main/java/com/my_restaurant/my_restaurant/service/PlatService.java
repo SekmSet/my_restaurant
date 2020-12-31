@@ -22,8 +22,8 @@ public class PlatService {
         return plats;
     }
 
-    public void save(Plat plat) {
-        platRepository.save(plat);
+    public Plat save(Plat plat) {
+        return platRepository.save(plat);
     }
 
     public Plat findById(long id){

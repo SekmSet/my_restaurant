@@ -7,6 +7,8 @@ import java.util.Set;
 
 @Entity
 public class Plat {
+    public static final String UPLOAD_PATH = "upload/admin/plat-";
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -87,5 +89,14 @@ public class Plat {
 
     public void setMenu(Set<Menu> menu) {
         this.menu = menu;
+    }
+
+    @Transient
+    public String getPhotosImagePath() {
+        if (photo == null) {
+            return null;
+        }
+
+        return "/" + UPLOAD_PATH + id + "/" + photo;
     }
 }
