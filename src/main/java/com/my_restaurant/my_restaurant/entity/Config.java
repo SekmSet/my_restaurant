@@ -39,10 +39,7 @@ public class Config {
     @NotBlank(message = "La bannière de votre site est requise")
     private String photo;
 
-
-    public Config() {
-
-    }
+    public Config() {}
 
     public long getId() {
         return id;

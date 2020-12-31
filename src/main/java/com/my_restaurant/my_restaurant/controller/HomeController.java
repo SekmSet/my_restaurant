@@ -22,7 +22,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String homePage(Model model) {
-        long id = 8;
+        long id = 1;
         long limit = 4;
 
         List<Avis> avis = avisService.getLast(limit);
