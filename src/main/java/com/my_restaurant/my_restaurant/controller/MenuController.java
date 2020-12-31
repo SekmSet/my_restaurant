@@ -36,6 +36,13 @@ public class MenuController {
         return "admin/menu/detail";
     }
 
+    @GetMapping("/menu/{id}")
+    public String menuOne(@PathVariable("id") long id, Model model) {
+        var menu = menuService.findById(id);
+        model.addAttribute("menu", menu);
+        return "page/menu/detail";
+    }
+
 
     @GetMapping("/admin/menu/ajout")
     public String showAddMenuForm(Menu menu, Model model) {

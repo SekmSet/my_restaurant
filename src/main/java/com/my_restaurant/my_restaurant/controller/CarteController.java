@@ -25,6 +25,20 @@ public class CarteController {
         return "admin/carte/index";
     }
 
+    @GetMapping("/carte")
+    public String indexCarte(Model model) {
+        var cartes = carteService.findAll();
+        model.addAttribute("cartes", cartes);
+        return "page/carte/index";
+    }
+
+    @GetMapping("/carte/{id}")
+    public String carteOne(@PathVariable("id") long id, Model model) {
+        var carte = carteService.findById(id);
+        model.addAttribute("carte", carte);
+        return "page/carte/detail";
+    }
+
     @GetMapping("/admin/carte/{id}")
     public String showOne(@PathVariable("id") long id, Model model) {
         var carte = carteService.findById(id);
