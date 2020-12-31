@@ -13,5 +13,11 @@
             </ul>
         </header>
         <h1>Page d'accueil</h1>
+
+        <h1>Nos derniers avis</h1>
+
+        <ul>
+            <li th:each="a : ${avis}"><span th:text="${a.message}"></span></li>
+        </ul>
     </body>
 </html>
