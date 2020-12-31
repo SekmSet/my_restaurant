@@ -1,13 +1,11 @@
 package com.my_restaurant.my_restaurant.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Config {
+    public static final String UPLOAD_PATH = "upload/config/banniere-";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -138,5 +136,14 @@ public class Config {
 
     public void setConfig(String config) {
         this.config = config;
+    }
+
+    @Transient
+    public String getPhotosImagePath() {
+        if (photo == null) {
+            return null;
+        }
+
+        return "/" + UPLOAD_PATH + id + "/" + photo;
     }
 }

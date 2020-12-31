@@ -5,27 +5,32 @@
     <title>My Restaurant</title>
 </head>
 <body>
-<form action="#" th:action="@{/admin/config/edit/{id}(id=${config.id})}" th:object="${config}" method="post">
-    <label for="name">Nom du restaurant : </label>
-    <input type="text" th:field="*{name}" id="name" placeholder="Nom du restaurant">
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 
-    <label for="url">URL du site : </label>
-    <input type="text" th:field="*{url}" id="url" placeholder="monSite.fr">
-    <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
+    <div>
+        <h1>Modifier ma config : </h1>
+        <form action="#" th:action="@{/admin/config/edit/{id}(id=${config.id})}" th:object="${config}" method="post" enctype="multipart/form-data">
+            <label for="name">Nom du restaurant : </label>
+            <input type="text" th:field="*{name}" id="name" placeholder="Nom du restaurant">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 
-
-    <label for="mdp">Mot de passe administrateur : </label>
-    <span>Min : 8 caractères, 1 minuscule, 1 majuscule, 1 nombre</span>
-    <input type="password" th:field="*{mdp}" id="mdp" >
-    <span th:if="${#fields.hasErrors('mdp')}" th:errors="*{mdp}"></span>
+            <label for="url">URL du site : </label>
+            <input type="text" th:field="*{url}" id="url" placeholder="monSite.fr">
+            <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
 
 
-    <label for="photo">Image pour la bannière : </label>
-    <input type="file" th:field="*{photo}" id="photo">
-    <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
+            <label for="mdp">Mot de passe administrateur : </label>
+            <span>Min : 8 caractères, 1 minuscule, 1 majuscule, 1 nombre</span>
+            <input type="password" th:field="*{mdp}" id="mdp" >
+            <span th:if="${#fields.hasErrors('mdp')}" th:errors="*{mdp}"></span>
 
-    <input type="submit" value="Sauvegarder">
-</form>
+
+            <label for="photo">Image pour la bannière : </label>
+            <input type="file" name="image" id="photo" accept="image/png, image/jpeg">
+            <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
+
+            <input type="submit" value="Sauvegarder">
+        </form>
+    </div>
+
 </body>
 </html>

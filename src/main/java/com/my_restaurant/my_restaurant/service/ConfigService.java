@@ -10,14 +10,13 @@ public class ConfigService {
     @Autowired
     private ConfigRepository configRepository;
 
-    public void save(Config config) {
-         configRepository.save(config);
+    public Config save(Config config) {
+         return configRepository.save(config);
     }
 
     public Config findById(long id){
         return configRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("La config n'a pas été trouvée"));
     }
-
 
    public void delete(Config config){
         configRepository.delete(config);

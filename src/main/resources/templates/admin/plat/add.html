@@ -11,7 +11,7 @@
     <ul>
         <li><a href="https://allergies.afpral.fr/allergie/en-savoir-plus-sur-les-allergies/alimentaires/89-liste-des-14-allergenes-alimentaires-majeurs" target="_blank">Liste des alergènes</a></li>
     </ul>
-    <form action="#" th:action="@{/admin/plat/ajout}" th:object="${plat}" method="post">
+    <form action="#" th:action="@{/admin/plat/ajout}" th:object="${plat}" method="post" enctype="multipart/form-data" >
         <label for="name">Nom du plat : </label>
         <input type="text" th:field="*{name}" id="name" placeholder="Pigeon rôti à la broche, cuisses confites en tartelette d’Automne">
         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
@@ -29,7 +29,7 @@
         <span th:if="${#fields.hasErrors('prix')}" th:errors="*{prix}"></span>
 
         <label for="photo">Image pour le plat : </label>
-        <input type="file" th:field="*{photo}" id="photo">
+        <input type="file" name="image" id="photo" accept="image/png, image/jpeg">
         <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
 
         <select th:field="*{menu}" class="form-control" multiple>
