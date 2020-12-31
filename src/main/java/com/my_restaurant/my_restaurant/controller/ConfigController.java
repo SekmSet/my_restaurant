@@ -48,6 +48,13 @@ public class ConfigController {
 
     @GetMapping("/admin/config/ajout")
     public String showSignUpForm(Config config) {
+        try {
+            configService.findById(1);
+            return "redirect:/admin";
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
         return "admin/config/add";
     }
 
@@ -55,6 +62,13 @@ public class ConfigController {
     public String addConfig(@Valid Config config, BindingResult result, Model model, @RequestParam("image") MultipartFile multipartFile) throws IOException {
         if (result.hasErrors()) {
             return "admin/config/add";
+        }
+
+        try {
+            configService.findById(1);
+            return "redirect:/admin";
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
 
         UserDetails user = User.withUsername("admin")
@@ -71,6 +85,7 @@ public class ConfigController {
         String fileName = UploadService.slugify(multipartFile);
         config.setPhoto(fileName);
 
+        config.setId(1);
         Config saveConfig = configService.save(config);
 
         String uploadDir = "public/" + Config.UPLOAD_PATH + saveConfig.getId();
