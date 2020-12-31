@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
+    <link th:rel="stylesheet" th:href="@{/assets/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <title>My Restaurant</title>
+</head>
+<body>
+
+<header>
+    <ul>
+        <li><a th:href="@{/}">Accueil</a></li>
+        <li><a th:href="@{/avis/ajout}">Ajouter un avis</a></li>
+        <li><a th:href="@{/admin}">Administrateur</a></li>
+    </ul>
+</header>
+
+<div>
+    <h1>Ajouter un avis : </h1>
+
+    <form action="#" th:action="@{/avis/ajout}" th:object="${avis}" method="post">
+
+        <label for="name">Mon nom : <span>(Obligatoire)</span> </label>
+        <input type="text" th:field="*{name}" id="name" placeholder="Arthur">
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+        <label for="email">Mon email : </label>
+        <input type="text" th:field="*{email}" id="email" >
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
+        <label for="message">Mon message : </label>
+        <textarea rows="20" cols="80" th:field="*{message}"  id="message" >... </textarea>
+        <span th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></span>
+
+        <label for="note"> Ma note :  <span>(Obligatoire)</span> </label>
+        <input type="number" th:field="*{note}" id="note" >
+        <span th:if="${#fields.hasErrors('note')}" th:errors="*{note}"></span>
+
+        <input type="submit" value="Créer">
+    </form>
+</div>
+</body>
+</html>
