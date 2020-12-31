@@ -33,11 +33,25 @@ public class PlatController {
         return "admin/plat/index";
     }
 
+    @GetMapping("/plat")
+    public String plat(Model model) {
+        var plat = platService.findAll();
+        model.addAttribute("plats", plat);
+        return "page/plat/index";
+    }
+
     @GetMapping("/admin/plat/{id}")
     public String showOne(@PathVariable("id") long id, Model model) {
         var plat = platService.findById(id);
         model.addAttribute("plat", plat);
         return "admin/plat/detail";
+    }
+
+    @GetMapping("/plat/{id}")
+    public String platOne(@PathVariable("id") long id, Model model) {
+        var plat = platService.findById(id);
+        model.addAttribute("plat", plat);
+        return "page/plat/detail";
     }
 
     @GetMapping("/admin/plat/ajout")

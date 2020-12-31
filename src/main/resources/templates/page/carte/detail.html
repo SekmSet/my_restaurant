@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
+        <title>My Restaurant</title>
+    </head>
+    <body>
+        <header>
+            <ul>
+                <li><a th:href="@{/}">Accueil</a></li>
+                <li><a th:href="@{/carte}">Notre carte</a></li>
+                <li><a th:href="@{/plat/}">Nos plats</a></li>
+                <li><a th:href="@{/avis/ajout}">Ajouter un avis</a></li>
+                <li><a th:href="@{/admin}">Administrateur</a></li>
+            </ul>
+        </header>
+        <div>
+            <h1>Carte  <span th:text="${carte.name}"></span></h1>
+            <h2>Liste des menus : </h2>
+            <ul th:each="menu : ${carte.menu}">
+                <li th:text="${menu.name}"></li> <span><a th:href="@{/menu/{id}(id=${menu.id})}">Voir</a></span>
+            </ul>
+        </div>
+     </body>
+</html>
