@@ -4,29 +4,42 @@
 
 <body>
     <div th:replace="~{parts/header :: header}"></div>
-    <div>
-        <h1>Bienvenu chez <span th:text="${config.name}"></span></h1>
-        <img th:src="${config.photosImagePath}" />
-
+    <div class="container">
         <div>
-            <h2>Information de contact</h2>
-            <ul>
-                <li th:text="${config.email}"></li>
+            <h1>Bienvenu chez <span th:text="${config.name}"></span></h1>
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" th:src="${config.photosImagePath}" alt="la banniere"/>
+                    </div>
+                </div>
+            </div>
 
-                <li th:text="${config.numberFix}"></li>
-                <li th:text="${config.numberPort}"></li>
+            <div class="card">
+                <div class="card-body">
+                    <h2>Information de contact</h2>
+                    <ul>
+                        <li th:text="${config.email}"></li>
 
-                <li th:text="${config.adresse}"></li>
-                <li th:text="${config.ville}"></li>
-                <li th:text="${config.cp}"></li>
-            </ul>
+                        <li th:text="${config.numberFix}"></li>
+                        <li th:text="${config.numberPort}"></li>
+
+                        <li th:text="${config.adresse}"></li>
+                        <li th:text="${config.ville}"></li>
+                        <li th:text="${config.cp}"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h2>Nos derniers avis</h2>
+                    <ul>
+                        <li th:each="a : ${avis}"><span th:text="${a.message}"></span></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
-        <h2>Nos derniers avis</h2>
-
-        <ul>
-            <li th:each="a : ${avis}"><span th:text="${a.message}"></span></li>
-        </ul>
     </div>
 
     <div th:replace="~{parts/footer :: footer}"></div>
