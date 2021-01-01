@@ -1,6 +1,8 @@
 package com.my_restaurant.my_restaurant.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -16,29 +18,37 @@ public class Config {
     @NotBlank(message = "L'URL du site est requis")
     private String url;
 
-    @NotBlank(message = "Le mot de passe est requis")
+    //@NotBlank(message = "Le mot de passe est requis")
+//    @Pattern.List({
+//            @Pattern(regexp = "(?=.*[0-9])", message = "Password must contain one digit."),
+//            @Pattern(regexp = "(?=.*[a-z])", message = "Password must contain one lowercase letter."),
+//            @Pattern(regexp = "(?=.*[A-Z])", message = "Password must contain one uppercase letter."),
+//            @Pattern(regexp = "(?=\\S+$)", message = "Password must contain no whitespace."),
+//            //@Pattern(regexp = ".*^\\w{8,}$", message="8 caracters")
+//    })
     private String mdp;
 
-     private String email;
+    private String email;
 
-     private String numberFix;
+    private String numberFix;
 
-     private String numberPort;
+    private String numberPort;
 
-     private String adresse;
+    private String adresse;
 
-     private String ville;
+    private String ville;
 
-     private String cp;
+    private String cp;
 
-     private String liens;
+    private String liens;
 
-     private String boutons;
+    private String boutons;
 
-    @NotBlank(message = "La bannière de votre site est requise")
+    //    @NotBlank(message = "La bannière de votre site est requise")
     private String photo;
 
-    public Config() {}
+    public Config() {
+    }
 
     public long getId() {
         return id;
@@ -127,7 +137,7 @@ public class Config {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-    
+
     public String getLiens() {
         return liens;
     }
