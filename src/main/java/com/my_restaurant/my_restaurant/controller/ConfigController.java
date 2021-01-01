@@ -59,7 +59,7 @@ public class ConfigController {
     }
 
     @PostMapping("/admin/config/ajout")
-    public String addConfig(@Valid Config config, BindingResult result, Model model, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+    public String addConfig(@Valid Config config, BindingResult result, @RequestParam("image") MultipartFile multipartFile) throws IOException {
         if (result.hasErrors()) {
             return "admin/config/add";
         }

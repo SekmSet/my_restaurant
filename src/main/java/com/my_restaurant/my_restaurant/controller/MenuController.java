@@ -3,6 +3,7 @@ package com.my_restaurant.my_restaurant.controller;
 import com.my_restaurant.my_restaurant.entity.Menu;
 import com.my_restaurant.my_restaurant.service.CarteService;
 import com.my_restaurant.my_restaurant.service.MenuService;
+import com.my_restaurant.my_restaurant.service.PlatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,8 @@ import javax.validation.Valid;
 
 @Controller
 public class MenuController {
+    @Autowired
+    private PlatService platService;
 
     @Autowired
     private MenuService menuService;
@@ -86,6 +89,12 @@ public class MenuController {
     @GetMapping("/admin/menu/delete/{id}")
     public String deleteMenu(@PathVariable("id") long id, Model model) {
         Menu menu = menuService.findById(id);
+
+        menu.getPlat().forEach(plat -> {
+            plat.removeMenu(menu);
+            platService.save(plat);
+        });
+
         menuService.delete(menu);
         return "redirect:/admin/menu";
     }
