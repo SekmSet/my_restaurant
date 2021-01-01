@@ -22,15 +22,20 @@ public class HomeController {
 
     @GetMapping("/")
     public String homePage(Model model) {
-        long id = 8;
+        long id = 1;
         long limit = 4;
 
         List<Avis> avis = avisService.getLast(limit);
-        Config config = configService.findById(id);
+
+        try {
+            Config config = configService.findById(id);
+            model.addAttribute("config", config);
+        } catch (Exception e) {
+            return "redirect:/admin/config/ajout";
+        }
 
         model.addAttribute("id", id);
         model.addAttribute("avis", avis);
-        model.addAttribute("config", config);
 
         return "index";
     }

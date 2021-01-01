@@ -8,7 +8,6 @@ public class Config {
     public static final String UPLOAD_PATH = "upload/config/banniere-";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @NotBlank(message = "Le nom du restaurant est requis")
@@ -39,10 +38,7 @@ public class Config {
     @NotBlank(message = "La bannière de votre site est requise")
     private String photo;
 
-
-    public Config() {
-
-    }
+    public Config() {}
 
     public long getId() {
         return id;
