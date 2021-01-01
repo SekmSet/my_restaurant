@@ -1,6 +1,7 @@
 package com.my_restaurant.my_restaurant.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,10 +20,9 @@ public class Plat {
     @NotBlank(message = "La description du plat est requise")
     private  String description;
 
-    @NotBlank(message = "La photo du plat est requise")
     private String photo;
 
-    @NotBlank(message = "Le prix (en €) du plat est requis")
+    @Min(value = 1, message = "Le prix du plat est de minimum 1€")
     private Integer prix;
 
     @NotBlank(message = "Les alergènes du plat sont requis")
@@ -89,6 +89,10 @@ public class Plat {
 
     public void setMenu(Set<Menu> menu) {
         this.menu = menu;
+    }
+
+    public void removeMenu(Menu menu) {
+        this.menu.remove(menu);
     }
 
     @Transient

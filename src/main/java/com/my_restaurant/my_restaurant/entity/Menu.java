@@ -1,6 +1,9 @@
 package com.my_restaurant.my_restaurant.entity;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +17,7 @@ public class Menu {
     @NotBlank(message = "Le nom du menu est requis")
     private String name;
 
-    @NotBlank(message = "Le prix (en €) du menu est requis")
+    @Min(value = 1, message = "Le prix du menu est de minimum 1€")
     private Integer prix;
 
     @ManyToMany(mappedBy = "menu")
@@ -65,5 +68,9 @@ public class Menu {
 
     public void setCarte(Set<Carte> carte) {
         this.carte = carte;
+    }
+
+    public void removeCarte(Carte carte) {
+        this.carte.remove(carte);
     }
 }

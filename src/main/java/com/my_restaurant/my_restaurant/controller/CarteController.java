@@ -2,6 +2,7 @@ package com.my_restaurant.my_restaurant.controller;
 
 import com.my_restaurant.my_restaurant.entity.Carte;
 import com.my_restaurant.my_restaurant.service.CarteService;
+import com.my_restaurant.my_restaurant.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,9 @@ public class CarteController {
 
     @Autowired
     private CarteService carteService;
+
+    @Autowired
+    private MenuService menuService;
 
     @GetMapping("/admin/carte")
     public String showIndex(Model model) {
@@ -85,6 +89,12 @@ public class CarteController {
     @GetMapping("/admin/carte/delete/{id}")
     public String deleteCarte(@PathVariable("id") long id, Model model) {
         Carte carte = carteService.findById(id);
+
+        carte.getMenu().forEach(menu -> {
+            menu.removeCarte(carte);
+            menuService.save(menu);
+        });
+
         carteService.delete(carte);
         return "redirect:/admin/carte";
     }
