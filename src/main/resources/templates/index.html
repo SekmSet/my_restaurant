@@ -1,22 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-        <title>My Restaurant</title>
-    </head>
-    <body>
-        <header>
-            <ul>
-                <li><a th:href="@{/}">Accueil</a></li>
-                <li><a th:href="@{/carte/}">Notre carte</a></li>
-                <li><a th:href="@{/plat/}">Nos plats</a></li>
-                <li><a th:href="@{/avis/ajout}">Ajouter un avis</a></li>
-                <li><a th:href="@{/admin}">Administrateur</a></li>
-            </ul>
-        </header>
+<head th:replace="~{parts/header :: head}"></head>
+
+<body>
+    <div th:replace="~{parts/header :: header}"></div>
     <div>
         <h1>Bienvenu chez <span th:text="${config.name}"></span></h1>
-
         <img th:src="${config.photosImagePath}" />
 
         <div>
@@ -39,6 +28,8 @@
             <li th:each="a : ${avis}"><span th:text="${a.message}"></span></li>
         </ul>
     </div>
+
+    <div th:replace="~{parts/footer :: footer}"></div>
 
     </body>
 </html>
