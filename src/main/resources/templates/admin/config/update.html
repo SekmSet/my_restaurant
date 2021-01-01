@@ -1,66 +1,93 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-    <title>My Restaurant</title>
-</head>
-<body>
+<head th:replace="~{parts/header :: head}"></head>
 
-    <div>
+<body>
+    <div th:replace="~{parts/header :: header}"></div>
+
+    <div class="container">
         <h1>Modifier ma config : </h1>
         <form action="#" th:action="@{/admin/config/edit/{id}(id=${config.id})}" th:object="${config}" method="post" enctype="multipart/form-data">
-            <label for="name">Nom du restaurant : </label>
-            <input type="text" th:field="*{name}" id="name" placeholder="Nom du restaurant">
-            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 
-            <label for="url">URL du site : </label>
-            <input type="text" th:field="*{url}" id="url" placeholder="monSite.fr">
-            <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text"  id="addon-wrapping" for="name">Nom du restaurant : </label>
+                <input class="form-control" aria-describedby="addon-wrapping" type="text" th:field="*{name}" id="name" placeholder="Nom du restaurant">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
 
-            <label for="mdp">Mot de passe administrateur : </label>
-            <span>Min : 8 caractères, 1 minuscule, 1 majuscule, 1 nombre</span>
-            <input type="password" th:field="*{mdp}" id="mdp" >
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text"  id="addon-wrapping" for="url">URL du site : </label>
+                <input class="form-control" aria-describedby="addon-wrapping" type="text" th:field="*{url}" id="url" placeholder="monSite.fr">
+                <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
+            </div>
+
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text"  id="addon-wrapping" for="mdp">Mot de passe administrateur : </label>
+                <span>Min : 8 caractères, 1 minuscule, 1 majuscule, 1 nombre</span>
+                <input class="form-control" aria-describedby="addon-wrapping" type="password" th:field="*{mdp}" id="mdp" >
+            </div>
             <span th:if="${#fields.hasErrors('mdp')}" th:errors="*{mdp}"></span>
 
-            <label for="photo">Image pour la bannière : </label>
-            <input type="file" name="image" id="photo" accept="image/png, image/jpeg">
-            <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text"  id="addon-wrapping" for="photo">Image pour la bannière : </label>
+                <input class="form-control" aria-describedby="addon-wrapping" type="file" name="image" id="photo" accept="image/png, image/jpeg">
+                <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
+            </div>
 
-            <label for="adresse">Addresse de mon restaurant : </label>
-            <input type="text" th:field="*{adresse}" id="adresse" placeholder="11 Rue des Lilas">
-            <span th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}"></span>
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text"  id="addon-wrapping" for="adresse">Addresse de mon restaurant : </label>
+                <input class="form-control" aria-describedby="addon-wrapping" type="text" th:field="*{adresse}" id="adresse" placeholder="11 Rue des Lilas">
+                <span th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}"></span>
+            </div>
 
-            <label for="ville">Ville de mon restaurant : </label>
-            <input type="text" th:field="*{ville}" id="ville" placeholder="LYON">
-            <span th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span>
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text"  id="addon-wrapping" for="ville">Ville de mon restaurant : </label>
+                <input class="form-control" aria-describedby="addon-wrapping" type="text" th:field="*{ville}" id="ville" placeholder="LYON">
+                <span th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span>
+            </div>
 
-            <label for="cp">Code postale de mon restaurant : </label>
-            <input type="text" th:field="*{cp}" id="cp" placeholder="69002">
-            <span th:if="${#fields.hasErrors('cp')}" th:errors="*{cp}"></span>
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text"  id="addon-wrapping" for="cp">Code postale de mon restaurant : </label>
+                <input class="form-control" aria-describedby="addon-wrapping" type="text" th:field="*{cp}" id="cp" placeholder="69002">
+                <span th:if="${#fields.hasErrors('cp')}" th:errors="*{cp}"></span>
+            </div>
 
-            <label for="email">Email de mon restaurant : </label>
-            <input type="text" th:field="*{email}" id="email" placeholder="mon-restaurant@gmail.com">
-            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text"  id="addon-wrapping" for="email">Email de mon restaurant : </label>
+                <input class="form-control" aria-describedby="addon-wrapping" type="text" th:field="*{email}" id="email" placeholder="mon-restaurant@gmail.com">
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            </div>
 
-            <label for="numberPort">Numéro de portable de mon restaurant : </label>
-            <input type="text" th:field="*{numberPort}" id="numberPort" placeholder="0600000000">
-            <span th:if="${#fields.hasErrors('numberPort')}" th:errors="*{numberPort}"></span>
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text"  id="addon-wrapping" for="numberPort">Numéro de portable de mon restaurant : </label>
+                <input class="form-control" aria-describedby="addon-wrapping" type="text" th:field="*{numberPort}" id="numberPort" placeholder="0600000000">
+                <span th:if="${#fields.hasErrors('numberPort')}" th:errors="*{numberPort}"></span>
+            </div>
 
-            <label for="numberFix">Numéro fixe de mon restaurant : </label>
-            <input type="text" th:field="*{numberFix}" id="numberFix" placeholder="0400000000">
-            <span th:if="${#fields.hasErrors('numberFix')}" th:errors="*{numberFix}"></span>
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text"  id="addon-wrapping" for="numberFix">Numéro fixe de mon restaurant : </label>
+                <input class="form-control" aria-describedby="addon-wrapping" type="text" th:field="*{numberFix}" id="numberFix" placeholder="0400000000">
+                <span th:if="${#fields.hasErrors('numberFix')}" th:errors="*{numberFix}"></span>
+            </div>
 
-            <label for="liens">Couleur des liens : </label>
-            <input type="text" th:field="*{liens}" id="liens" placeholder="#ff0000">
-            <span th:if="${#fields.hasErrors('liens')}" th:errors="*{liens}"></span>
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text"  id="addon-wrapping" for="liens">Couleur des liens : </label>
+                <input class="form-control" aria-describedby="addon-wrapping" type="text" th:field="*{liens}" id="liens" placeholder="#ff0000">
+                <span th:if="${#fields.hasErrors('liens')}" th:errors="*{liens}"></span>
+            </div>
 
-            <label for="boutons">Couleurs des boutons : </label>
-            <input type="text" th:field="*{boutons}" id="boutons" placeholder="#ff0000">
-            <span th:if="${#fields.hasErrors('boutons')}" th:errors="*{boutons}"></span>
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text"  id="addon-wrapping" for="boutons">Couleurs des boutons : </label>
+                <input class="form-control" aria-describedby="addon-wrapping" type="text" th:field="*{boutons}" id="boutons" placeholder="#ff0000">
+                <span th:if="${#fields.hasErrors('boutons')}" th:errors="*{boutons}"></span>
+            </div>
 
             <input type="submit" value="Sauvegarder">
         </form>
     </div>
+
+    <div th:replace="~{parts/footer :: footer}"></div>
 
 </body>
 </html>
