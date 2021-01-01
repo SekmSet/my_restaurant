@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-    <title>My Restaurant</title>
-</head>
+<head th:replace="~{parts/header :: head}"></head>
+
 <body>
-<header>
-    <ul>
-        <li><a th:href="@{/}">Accueil</a></li>
-        <!--                <li><a th:href="@{/carte}">Notre carte</a></li>-->
-        <li><a th:href="@{/admin}">Administrateur</a></li>
-    </ul>
-</header>
-<h1>Detail de ma config </h1>
+    <div th:replace="~{parts/header :: header}"></div>
 
-<div>
-    <ul>
-        <li th:text="${config.name}"></li>
-        <li th:text="${config.email}"></li>
-        <li th:text="${config.url}"></li>
-        <li th:text="${config.numberFix}"></li>
-        <li th:text="${config.numberPort}"></li>
-        <li th:text="${config.adresse}"></li>
-        <li th:text="${config.ville}"></li>
-        <li th:text="${config.cp}"></li>
-    </ul>
-    <img th:src="${config.photosImagePath}" />
-</div>
+    <div class="container">
+        <h1>Detail de ma config </h1>
+        <div class="card">
+            <div class="card-body">
+                <p>Nom : <span th:text="${config.name}"></span></p>
+                <p>Email : <span th:text="${config.email}"></span></p>
+                <p>URL : <span th:text="${config.url}"></span></p>
+                <p>Téléphone fix : <span th:text="${config.numberFix}"></span></p>
+                <p>Téléphone portable : <span th:text="${config.numberPort}"></span></p>
+                <p>Adresse : <span th:text="${config.adresse}"></span></p>
+                <p>Ville : <span th:text="${config.ville}"></span></p>
+                <p>Code postale : <span th:text="${config.cp}"></span></p>
+            </div>
+        </div>
 
-<p><a th:href="@{/admin/config/edit/1}">Editer ma config</a></p>
+        <img th:src="${config.photosImagePath}" alt="ma bannière"/>
+
+        <div>
+            <button><a th:href="@{/admin/config/edit/1}">Editer ma config</a></button>
+        </div>
+    </div>
+
+    <div th:replace="~{parts/footer :: footer}"></div>
 
 </body>
 </html>
