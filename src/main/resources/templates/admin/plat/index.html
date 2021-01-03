@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-        <title>My Restaurant</title>
-    </head>
-    <body>
-        <header>
-            <ul>
-                <li><a th:href="@{/}">Accueil</a></li>
-<!--                <li><a th:href="@{/carte}">Notre carte</a></li>-->
-                <li><a th:href="@{/admin}">Administrateur</a></li>
-            </ul>
-        </header>
+<head th:replace="~{parts/header :: head}"></head>
+
+<body>
+    <div th:replace="~{parts/header :: header}"></div>
+    <div class="container">
         <h1>Mon espace administrateur : plats</h1>
-        <ul>
-            <li><a th:href="@{/admin/plat/ajout}">Ajouter un plat</a></li>
-            <!--                <li><a th:href="@{/carte}">Notre carte</a></li>-->
-        </ul>
+        <button><a th:href="@{/admin/plat/ajout}">Ajouter un plat</a></button>
+        
         <h1>Tous mes plats</h1>
-        <table>
+
+        <table class="table">
             <thead>
             <tr>
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Prix</th>
-                <th>Options</th>
-
+                <th>Voir</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
             </tr>
             </thead>
             <tbody>
@@ -33,13 +26,13 @@
                 <td th:text="${plat.name}"></td>
                 <td th:text="${plat.description}"></td>
                 <td th:text="${plat.prix}"></td>
-                <td>
-                    <a th:href="@{/admin/plat/{id}(id=${plat.id})}">Voir</a>
-                    <a th:href="@{/admin/plat/update/{id}(id=${plat.id})}">Modifier</a>
-                    <a th:href="@{/admin/plat/delete/{id}(id=${plat.id})}">Supprimer</a>
-                </td>
+                <td><a th:href="@{/admin/plat/{id}(id=${plat.id})}">Voir</a></td>
+                <td><a th:href="@{/admin/plat/update/{id}(id=${plat.id})}">Modifier</a></td>
+                <td><a th:href="@{/admin/plat/delete/{id}(id=${plat.id})}">Supprimer</a></td>
             </tr>
             </tbody>
         </table>
-     </body>
+    </div>
+    <div th:replace="~{parts/footer :: footer}"></div>
+</body>
 </html>
