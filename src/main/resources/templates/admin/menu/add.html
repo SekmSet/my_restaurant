@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-    <title>My Restaurant</title>
-</head>
+<head th:replace="~{parts/header :: head}"></head>
+
 <body>
+    <div th:replace="~{parts/header :: header}"></div>
+    <div class="container">
+        <h1>Créer un nouveau menu : </h1>
 
-    <h1>Créer un nouveau menu : </h1>
+        <form action="#" th:action="@{/admin/menu/ajout}" th:object="${menu}" method="post">
+            <div class="input-group mb-3">
+                <label for="name" class="input-group-text" id="basic-addon1">Nom du menu : </label>
+                <input  aria-label="Nom du menu" class="form-control" aria-describedby="basic-addon1" type="text" th:field="*{name}" id="name" placeholder="Gourmandises">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
 
-    <form action="#" th:action="@{/admin/menu/ajout}" th:object="${menu}" method="post">
-        <label for="name">Nom du menu : </label>
-        <input type="text" th:field="*{name}" id="name" placeholder="Le classic">
-        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            <div class="input-group mb-3">
+                <label for="prix" class="input-group-text" id="basic-addon1">Prix du menu : </label>
+                <input  aria-label="Prix" class="form-control" aria-describedby="basic-addon1" type="number" th:field="*{prix}" id="prix">
+                <span th:if="${#fields.hasErrors('prix')}" th:errors="*{prix}"></span>
+            </div>
 
-        <label for="prix">Prix en € : </label>
-        <input type="number" th:field="*{prix}" id="prix" >
-        <span th:if="${#fields.hasErrors('prix')}" th:errors="*{prix}"></span>
+            <div>
+                <select th:field="*{carte}" class="form-control" multiple>
+                    <option th:each="carte: ${cartesList}" th:value="${carte.id}" th:text="${carte.name}"></option>
+                </select>
+            </div>
+            <input type="submit" value="Créer">
+        </form>
+    </div>
+    <div th:replace="~{parts/footer :: footer}"></div>
 
-        <select th:field="*{carte}" class="form-control" multiple>
-            <option th:each="carte: ${cartesList}" th:value="${carte.id}" th:text="${carte.name}"></option>
-        </select>
-
-        <input type="submit" value="Créer">
-    </form>
 </body>
 </html>
