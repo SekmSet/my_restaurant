@@ -6,8 +6,10 @@
     <div th:replace="~{parts/header :: header}"></div>
     <div class="container">
         <h1>Mon espace administrateur : plats</h1>
-        <button><a th:href="@{/admin/plat/ajout}">Ajouter un plat</a></button>
-        
+        <div  class="d-grid gap-2 col-6 mx-auto">
+            <button type="button" class="btn btn-primary"><a th:href="@{/admin/plat/ajout}">Ajouter un plat</a></button>
+        </div>
+
         <h1>Tous mes plats</h1>
 
         <table class="table">

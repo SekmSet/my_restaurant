@@ -26,8 +26,9 @@
                     <option th:each="carte: ${cartesList}" th:value="${carte.id}" th:text="${carte.name}"></option>
                 </select>
             </div>
-
-            <input type="submit" value="Sauvegarder">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <input class="btn btn-primary" type="submit" value="Sauvegarder">
+            </div>
         </form>
     </div>
 

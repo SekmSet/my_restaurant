@@ -28,8 +28,9 @@
                 <input  class="form-control" aria-describedby="addon-wrapping" type="file" name="image" id="photo" accept="image/png, image/jpeg">
                 <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
             </div>
-
-            <input type="submit" value="Créer">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <input class="btn btn-primary" type="submit" value="Créer">
+            </div>
         </form>
     </div>
 </body>

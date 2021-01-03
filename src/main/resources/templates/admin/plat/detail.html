@@ -13,7 +13,9 @@
                 <p>Allergènes : <span class="card-text" th:text="${plat.alergenes}"></span></p>
             </div>
         </div>
-        <button><a th:href="@{/admin/plat}">Gêrer mes plats</a></button>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="button" class="btn btn-primary"><a th:href="@{/admin/plat}">Gêrer mes plats</a></button>
+        </div>
     </div>
 
     <div th:replace="~{parts/footer :: footer}"></div>

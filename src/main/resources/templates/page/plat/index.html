@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <h5 class="card-title" th:text="${plat.name}"></h5>
                         <span class="card-text" th:text="${plat.prix}"></span> €
-                        <p><button class="card-text"><a th:href="@{/plat/{id}(id=${plat.id})}">Voir</a></button></p>
+                        <p><button class="card-text btn btn-primary" type="button"><a th:href="@{/plat/{id}(id=${plat.id})}">Voir</a></button></p>
                     </div>
                 </div>
             </div>

@@ -82,8 +82,9 @@
                 <input class="form-control" aria-describedby="addon-wrapping" type="text" th:field="*{boutons}" id="boutons" placeholder="#ff0000">
                 <span th:if="${#fields.hasErrors('boutons')}" th:errors="*{boutons}"></span>
             </div>
-
-            <input type="submit" value="Sauvegarder">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <input class="btn btn-primary" type="submit" value="Sauvegarder">
+            </div>
         </form>
     </div>
 

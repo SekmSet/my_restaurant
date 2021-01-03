@@ -13,7 +13,9 @@
                 <input  aria-label="Nom de la carte" class="form-control" aria-describedby="basic-addon1" type="text" th:field="*{name}" id="name" placeholder="Carte des desserts">
                 <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
             </div>
-            <input type="submit" value="Sauvegarder">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <input class="btn btn-primary" type="submit" value="Sauvegarder">
+            </div>
         </form>
     </div>
 

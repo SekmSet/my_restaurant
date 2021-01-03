@@ -7,7 +7,9 @@
     <div class="container">
 
         <h1> Modifier mon plat : <span th:text="${plat.name}"></span></h1>
-        <button><a href="https://allergies.afpral.fr/allergie/en-savoir-plus-sur-les-allergies/alimentaires/89-liste-des-14-allergenes-alimentaires-majeurs" target="_blank">Liste des alergènes</a></button>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="button" class="btn btn-primary"><a href="https://allergies.afpral.fr/allergie/en-savoir-plus-sur-les-allergies/alimentaires/89-liste-des-14-allergenes-alimentaires-majeurs" target="_blank">Liste des alergènes</a></button>
+        </div>
         <form action="#" th:action="@{/admin/plat/update/{id}(id=${plat.id})}" th:object="${plat}" method="post" enctype="multipart/form-data" >
 
             <div class="input-group mb-3">
@@ -44,8 +46,9 @@
                     <option th:each="menu: ${menuList}" th:value="${menu.id}" th:text="${menu.name}"></option>
                 </select>
             </div>
-
-            <input type="submit" value="Sauvegarder">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <input class="btn btn-primary" type="submit" value="Sauvegarder">
+            </div>
         </form>
     </div>
 
