@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-        <title>My Restaurant</title>
-    </head>
-    <body>
-        <header>
-            <ul>
-                <li><a th:href="@{/}">Accueil</a></li>
-<!--                <li><a th:href="@{/carte}">Notre carte</a></li>-->
-                <li><a th:href="@{/admin}">Administrateur</a></li>
-            </ul>
-        </header>
-       <h1>  Voir mon plat : <span th:text="${plat.name}"></span></h1>
+<head th:replace="~{parts/header :: head}"></head>
 
-        <div>
-            <div>Prix : <span th:text="${plat.prix}"></span></div>
-            <div>Description : <span th:text="${plat.description}"></span></div>
-            <div>Alergène : <span th:text="${plat.alergenes}"></span></div>
-            <div>Photo :
-                <img th:src="${plat.photosImagePath}" />
+<body>
+    <div th:replace="~{parts/header :: header}"></div>
+    <div class="container">
+        <div class="card mb-3">
+            <img th:src="${plat.photosImagePath}" alt="image de mon plat"/>
+            <div class="card-body">
+                <h5 class="card-title" th:text="${plat.name}"></h5>
+                <p><span class="card-text" th:text="${plat.description}"></span></p>
+                <p>Allergènes : <span class="card-text" th:text="${plat.alergenes}"></span></p>
             </div>
         </div>
+        <button><a th:href="@{/admin/plat}">Gêrer mes plats</a></button>
+    </div>
 
-        <ul>
-            <li><a th:href="@{/admin/plat}">Gêrer mes plats</a></li>
-        </ul>
-     </body>
+    <div th:replace="~{parts/footer :: footer}"></div>
+
+</body>
 </html>
