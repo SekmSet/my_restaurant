@@ -33,8 +33,8 @@ public class AvisService {
         return new ArrayList<Avis>(results);
     }
 
-    public void save(Avis avis) {
-        avisRepository.save(avis);
+    public Avis save(Avis avis) {
+       return avisRepository.save(avis);
     }
 
     public void delete(Avis avis){

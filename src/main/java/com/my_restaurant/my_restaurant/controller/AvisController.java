@@ -41,6 +41,33 @@ public class AvisController {
         return "admin/avis/index";
     }
 
+    @GetMapping("/admin/avis/{id}")
+    public String showOne(@PathVariable("id") long id, Model model) {
+        var avi = avisService.findById(id);
+        model.addAttribute("avi", avi);
+        return "admin/avi/detail";
+    }
+
+    @GetMapping("/admin/avis/update/{id}")
+    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+
+        Avis avis = avisService.findById(id);
+        model.addAttribute("avis", avis);
+
+        return "admin/avis/update";
+    }
+
+    @PostMapping("/admin/avis/update/{id}")
+    public String updateCarte(@PathVariable("id") long id, @Valid Avis avis, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            avis.setId(id);
+            return "admin/avis/update";
+        }
+        avisService.save(avis);
+
+        return "redirect:/admin/avis";
+    }
+
     @GetMapping("/admin/avis/delete/{id}")
     public String deleteCarte(@PathVariable("id") long id, Model model) {
         Avis avi = avisService.findById(id);
