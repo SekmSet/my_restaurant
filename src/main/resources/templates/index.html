@@ -35,7 +35,10 @@
                 <div class="card-body">
                     <h2>Nos derniers avis</h2>
                     <ul>
-                        <li th:each="a : ${avis}"><span th:text="${a.message}"></span></li>
+                        <li th:each="a : ${avis}">
+                            <span th:text="${a.message}"></span>
+                            note: <span class="star" th:data-rateit-value="${a.note}"></span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -44,5 +47,13 @@
 
     <div th:replace="~{parts/footer :: footer}"></div>
 
+    <script>
+        $('.star').rateit({
+            min: 0,
+            max: 5,
+            step: 1,
+            readonly:true,
+        })
+    </script>
     </body>
 </html>

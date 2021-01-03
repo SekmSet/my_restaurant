@@ -23,8 +23,11 @@
 
             <div class="input-group flex-nowrap">
                 <label class="input-group-text" for="note" id="addon-wrapping">Ma note*</span> </label>
-                <input type="number" class="form-control" th:field="*{note}" id="note" aria-describedby="addon-wrapping">
+<!--                <input type="number" class="form-control" th:field="*{note}" id="note" aria-describedby="addon-wrapping">-->
                 <span th:if="${#fields.hasErrors('note')}" th:errors="*{note}"></span>
+
+                <input type="range" min="0" max="5" th:field="*{note}" step="1" id="note">
+                <div class="rateit" data-rateit-backingfld="#note"></div>
             </div>
 
             <div class="input-group">
@@ -38,6 +41,5 @@
     </div>
 
     <div th:replace="~{parts/footer :: footer}"></div>
-
 </body>
 </html>
