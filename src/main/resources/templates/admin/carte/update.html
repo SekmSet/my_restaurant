@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-    <title>My Restaurant</title>
-</head>
+<head th:replace="~{parts/header :: head}"></head>
+
 <body>
+    <div th:replace="~{parts/header :: header}"></div>
+    <div class="container">
+        <h1>Modifier ma carte : <span th:text="${carte.name}"></span></h1>
 
-<div>
-    <h1>Modifier ma carte : <span th:text="${carte.name}"></span></h1>
+        <form action="#" th:action="@{/admin/carte/update/{id}(id=${carte.id})}" th:object="${carte}" method="post">
+            <div class="input-group mb-3">
+                <label for="name" class="input-group-text" id="basic-addon1">Nom de la carte : </label>
+                <input  aria-label="Nom de la carte" class="form-control" aria-describedby="basic-addon1" type="text" th:field="*{name}" id="name" placeholder="Carte des desserts">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
+            <input type="submit" value="Sauvegarder">
+        </form>
+    </div>
 
-    <form action="#" th:action="@{/admin/carte/update/{id}(id=${carte.id})}" th:object="${carte}" method="post">
-        <label for="name">Nom de la carte : </label>
-        <input type="text" th:field="*{name}" id="name">
-        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-
-        <input type="submit" value="Sauvegarder">
-    </form>
-</div>
+    <div th:replace="~{parts/footer :: footer}"></div>
 
 </body>
 </html>
