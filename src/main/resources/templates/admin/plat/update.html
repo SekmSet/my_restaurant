@@ -1,43 +1,55 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-    <title>My Restaurant</title>
-</head>
+<head th:replace="~{parts/header :: head}"></head>
+
 <body>
+    <div th:replace="~{parts/header :: header}"></div>
+    <div class="container">
 
-<h1> Modifier mon plat : <span th:text="${plat.name}"></span></h1>
+        <h1> Modifier mon plat : <span th:text="${plat.name}"></span></h1>
+        <button><a href="https://allergies.afpral.fr/allergie/en-savoir-plus-sur-les-allergies/alimentaires/89-liste-des-14-allergenes-alimentaires-majeurs" target="_blank">Liste des alergènes</a></button>
+        <form action="#" th:action="@{/admin/plat/update/{id}(id=${plat.id})}" th:object="${plat}" method="post" enctype="multipart/form-data" >
 
-<ul>
-    <li><a href="https://allergies.afpral.fr/allergie/en-savoir-plus-sur-les-allergies/alimentaires/89-liste-des-14-allergenes-alimentaires-majeurs" target="_blank">Liste des alergènes</a></li>
-</ul>
-<form action="#" th:action="@{/admin/plat/update/{id}(id=${plat.id})}" th:object="${plat}" method="post" enctype="multipart/form-data" >
-    <label for="name">Nom du plat : </label>
-    <input type="text" th:field="*{name}" id="name">
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            <div class="input-group mb-3">
+                <label for="name" class="input-group-text" id="basic-addon1">Nom du plat : </label>
+                <input  aria-label="Nom du plat" class="form-control" aria-describedby="basic-addon1" type="text" th:field="*{name}" id="name" placeholder="Tarte citron">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
 
-    <label for="description">Description : </label>
-    <textarea  rows="10" cols="10" th:field="*{description}" id="description" >... </textarea>
-    <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+            <div class="input-group">
+                <label for="description" class="input-group-text">Description</label>
+                <textarea class="form-control" aria-label="With textarea" th:field="*{description}"  id="description"></textarea>
+            </div>
 
-    <label for="alergenes">Alergènes : </label>
-    <input type="text" th:field="*{alergenes}" id="alergenes">
-    <span th:if="${#fields.hasErrors('alergenes')}" th:errors="*{alergenes}"></span>
+            <div class="input-group mb-3">
+                <label for="alergenes" class="input-group-text" id="basic-addon1">Allergènes</label>
+                <input  aria-label="Allergènes" class="form-control" aria-describedby="basic-addon1" type="text" th:field="*{alergenes}" id="alergenes" placeholder="viande, poisson, peuf, lait">
+                <span th:if="${#fields.hasErrors('alergenes')}" th:errors="*{alergenes}"></span>
+            </div>
 
+            <div class="input-group mb-3">
+                <label for="prix" class="input-group-text" id="basic-addon1">Prix du menu : </label>
+                <input  aria-label="Prix" class="form-control" aria-describedby="basic-addon1" type="number" th:field="*{prix}" id="prix">
+                <span th:if="${#fields.hasErrors('prix')}" th:errors="*{prix}"></span>
+            </div>
+            
+            <div class="input-group flex-nowrap">
+                <label class="input-group-text"  id="addon-wrapping" for="photo">Image pour le plat : </label>
+                <input class="form-control" aria-describedby="addon-wrapping" type="file" name="image" id="photo" accept="image/png, image/jpeg">
+                <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
+            </div>
 
-    <label for="prix">Prix en € : </label>
-    <input type="number" th:field="*{prix}" id="prix" >
-    <span th:if="${#fields.hasErrors('prix')}" th:errors="*{prix}"></span>
+            <div>
+                <select th:field="*{menu}" class="form-control" multiple>
+                    <option th:each="menu: ${menuList}" th:value="${menu.id}" th:text="${menu.name}"></option>
+                </select>
+            </div>
 
-    <label for="photo">Image pour le plat : </label>
-    <input type="file" name="image" id="photo" accept="image/png, image/jpeg">
-    <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
+            <input type="submit" value="Sauvegarder">
+        </form>
+    </div>
 
-    <select th:field="*{menu}" class="form-control" multiple>
-        <option th:each="menu: ${menuList}" th:value="${menu.id}" th:text="${menu.name}"></option>
-    </select>
+    <div th:replace="~{parts/footer :: footer}"></div>
 
-    <input type="submit" value="Sauvegarder">
-</form>
 </body>
 </html>
