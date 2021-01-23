@@ -17,7 +17,7 @@ public class AddGlobalVariableToTemplates {
 	public String test() {
 		Config config = findById();
 
-		if(config.getBoutons().isBlank()){
+		if(config.getBoutons() == null || config.getBoutons().isBlank()){
 			config.setBoutons("00FF00");
 		}
 
@@ -28,7 +28,7 @@ public class AddGlobalVariableToTemplates {
 	public String link() {
 		Config config = findById();
 
-		if(config.getLiens().isBlank()){
+		if(config.getLiens() == null || config.getLiens().isBlank()){
 			config.setLiens("0F0F0F");
 		}
 
