@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{parts/header :: head}"></head>
+
+<body>
+<div th:replace="~{parts/header :: header}"></div>
+<div class="container">
+    <h1>Mon espace administrateur : avis</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Auteur</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Note</th>
+            <th>Date</th>
+            <th>Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="avis : ${avis}">
+            <th th:text="${avis.name}"></th>
+            <th  th:text="${avis.email}"></th>
+            <th  th:text="${avis.message}"></th>
+            <th  th:text="${avis.note}"></th>
+            <th  th:text="${avis.createdAt}"></th>
+            <th>
+                <a th:href="@{/admin/avis/delete/{id}(id=${avis.id})}">Supprimer</a>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

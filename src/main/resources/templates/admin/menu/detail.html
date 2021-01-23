@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-        <title>My Restaurant</title>
-    </head>
-    <body>
-        <header>
-            <ul>
-                <li><a th:href="@{/}">Accueil</a></li>
-<!--                <li><a th:href="@{/carte}">Notre carte</a></li>-->
-                <li><a th:href="@{/admin}">Administrateur</a></li>
-            </ul>
-        </header>
-        <h1>Detail de mon menu : <span th:text="${menu.name}"></span></h1>
-        
-        <div>
-            <div>Prix : <span th:text="${menu.prix}"></span></div>
-            <div>
-                <h2>Liste des plats : </h2>
-                <ul>
-                    <li th:each="plat: ${menu.plat}" th:text="${plat.name}"></li>
-                </ul>
-            </div>
-         </div>
+<head th:replace="~{parts/header :: head}"></head>
 
-        <ul>
-            <li><a th:href="@{/admin/menu}">Gêrer mes menus</a></li>
-        </ul>
-     </body>
+<body>
+    <div th:replace="~{parts/header :: header}"></div>
+    <div class="container">
+        <h1>Detail de mon menu : <span th:text="${menu.name}"></span></h1>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Menu <span th:text="${menu.name}"></span></h3>
+                <h4>Prix : <span th:text="${menu.prix}"></span></h4>
+            </div>
+            <ul class="list-group list-group-flush" th:each="plat : ${menu.plat}">
+                <li class="list-group-item"><p><span th:text="${menu.name}"></span></p></li>
+            </ul>
+        </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <a class="btn btn-primary" th:href="@{/admin/menu}">Gêrer mes menus</a>
+        </div>
+
+    </div>
+
+    <div th:replace="~{parts/footer :: footer}"></div>
+
+</body>
 </html>

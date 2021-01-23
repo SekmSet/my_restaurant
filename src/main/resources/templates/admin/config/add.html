@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-    <title>My Restaurant</title>
-</head>
+<head th:replace="~{parts/header :: head}"></head>
 <body>
-<form action="#" th:action="@{/admin/config/ajout}" th:object="${config}" method="post" enctype="multipart/form-data">
-    <label for="name">Nom du restaurant : </label>
-    <input type="text" th:field="*{name}" id="name" placeholder="Nom du restaurant">
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <div class="container">
+        <form action="#" th:action="@{/admin/config/ajout}" th:object="${config}" method="post" enctype="multipart/form-data">
+           <div class="input-group mb-3">
+               <label  class="input-group-text" id="basic-addon1" for="name">Nom du restaurant : </label>
+               <input  aria-label="Nom du restaurant" class="form-control" aria-describedby="basic-addon1" type="text" th:field="*{name}" id="name" placeholder="Nom du restaurant">
+               <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+           </div>
 
-    <label for="url">URL du site : </label>
-    <input type="text" th:field="*{url}" id="url" placeholder="monSite.fr">
-    <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
+            <div class="input-group mb-3">
+                <label  class="input-group-text" id="basic-addon1" for="url">URL du site : </label>
+                <input  aria-label="URL du site" class="form-control" aria-describedby="basic-addon1" type="text" th:field="*{url}" id="url" placeholder="monSite.fr">
+                <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
+            </div>
 
+            <div class="input-group mb-3">
+                <label  class="input-group-text" id="basic-addon1" for="mdp">Mot de passe administrateur : </label>
+                <span>Min : 8 caractères, 1 minuscule, 1 majuscule, 1 nombre</span>
+                <input  aria-label="Mot de passe" class="form-control" aria-describedby="basic-addon1" type="password" th:field="*{mdp}" id="mdp" >
+                <span th:if="${#fields.hasErrors('mdp')}" th:errors="*{mdp}"></span>
+            </div>
 
-    <label for="mdp">Mot de passe administrateur : </label>
-    <span>Min : 8 caractères, 1 minuscule, 1 majuscule, 1 nombre</span>
-    <input type="password" th:field="*{mdp}" id="mdp" >
-    <span th:if="${#fields.hasErrors('mdp')}" th:errors="*{mdp}"></span>
-
-
-    <label for="photo">Image pour la bannière : </label>
-    <input type="file" name="image" id="photo" accept="image/png, image/jpeg">
-    <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
-
-    <input type="submit" value="Créer">
-</form>
+            <div class="input-group flex-nowrap">
+                <label  class="input-group-text" id="addon-wrapping" for="photo">Image pour la bannière : </label>
+                <input  class="form-control" aria-describedby="addon-wrapping" type="file" name="image" id="photo" accept="image/png, image/jpeg">
+                <span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <input class="btn btn-primary" type="submit" value="Créer">
+            </div>
+        </form>
+    </div>
 </body>
 </html>

@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-        <title>My Restaurant</title>
-    </head>
-    <body>
-        <header>
-            <ul>
-                <li><a th:href="@{/}">Accueil</a></li>
-<!--                <li><a th:href="@{/carte}">Notre carte</a></li>-->
-                <li><a th:href="@{/admin}">Administrateur</a></li>
-            </ul>
-        </header>
-        <h1>Mon espace administrateur</h1>
+<head th:replace="~{parts/header :: head}"></head>
 
-        <ul>
-            <li><a th:href="@{/admin/config/detail/1}">Voir ma config</a></li>
-            <li><a th:href="@{/admin/carte}">Gérer ma carte</a></li>
-            <li><a th:href="@{/admin/menu}">Gêrer mes menus</a></li>
-            <li><a th:href="@{/admin/plat}">Gêrer mes plats</a></li>
-        </ul>
-     </body>
+<body>
+    <div th:replace="~{parts/header :: header}"></div>
+    <div class="container">
+            <h1>Mon espace administrateur</h1>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a th:href="@{/admin/config/detail/1}">Voir ma config</a></li>
+                <li class="list-group-item"><a th:href="@{/admin/carte}">Gérer ma carte</a></li>
+                <li class="list-group-item"><a th:href="@{/admin/menu}">Gêrer mes menus</a></li>
+                <li class="list-group-item"><a th:href="@{/admin/plat}">Gêrer mes plats</a></li>
+                <li class="list-group-item"><a th:href="@{/admin/avis}">Voir tous les avis</a></li>
+            </ul>
+    </div>
+
+    <div th:replace="~{parts/footer :: footer}"></div>
+
+</body>
 </html>

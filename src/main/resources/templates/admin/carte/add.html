@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-    <title>My Restaurant</title>
-</head>
+<head th:replace="~{parts/header :: head}"></head>
+
 <body>
-    <div>
+<div th:replace="~{parts/header :: header}"></div>
+<div class="container">
         <h1>Créer une nouvelle carte</h1>
         <form action="#" th:action="@{/admin/carte/ajout}" th:object="${carte}" method="post">
-            <label for="name">Nom de la carte : </label>
-            <input type="text" th:field="*{name}" id="name" placeholder="Carte des desserts">
-            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 
-            <input type="submit" value="Créer">
+            <div class="input-group mb-3">
+                <label for="name" class="input-group-text" id="basic-addon1">Nom de la carte : </label>
+                <input  aria-label="Nom de la carte" class="form-control" aria-describedby="basic-addon1" type="text" th:field="*{name}" id="name" placeholder="Carte des desserts">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <input class="btn btn-primary" type="submit" value="Créer">
+            </div>
         </form>
     </div>
+
+    <div th:replace="~{parts/footer :: footer}"></div>
 
 </body>
 </html>

@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-        <title>My Restaurant</title>
-    </head>
-    <body>
-        <header>
-            <ul>
-                <li><a th:href="@{/}">Accueil</a></li>
-                <li><a th:href="@{/carte}">Notre carte</a></li>
-                <li><a th:href="@{/plat/}">Nos plats</a></li>
-                <li><a th:href="@{/avis/ajout}">Ajouter un avis</a></li>
-                <li><a th:href="@{/admin}">Administrateur</a></li>
-            </ul>
-        </header>
+<head th:replace="~{parts/header :: head}"></head>
 
-        <div>
-            <h1>Liste de nos cartes … </h1>
-            <ul th:each="carte : ${cartes}">
-                <li th:text="${carte.name}"></li> <span><a th:href="@{/carte/{id}(id=${carte.id})}">Voir</a></span>
-            </ul>
+<body>
+<div th:replace="~{parts/header :: header}"></div>
+        <div class="container">
+            <h1>Nos cartes … </h1>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col"  th:each="carte : ${cartes}">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${carte.name}"></h5>
+                            <p><a class="card-text btn btn-primary" th:href="@{/carte/{id}(id=${carte.id})}">Voir</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+        <div th:replace="~{parts/footer :: footer}"></div>
 
      </body>
 </html>

@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-        <title>My Restaurant</title>
-    </head>
-    <body>
-        <header>
-            <ul>
-                <li><a th:href="@{/}">Accueil</a></li>
-<!--                <li><a th:href="@{/carte}">Notre carte</a></li>-->
-                <li><a th:href="@{/admin}">Administrateur</a></li>
-            </ul>
-        </header>
-        <h1>Mon espace administrateur : carte</h1>
-        <ul>
-            <li><a th:href="@{/admin/carte/ajout}">Ajouter une carte</a></li>
-        </ul>
+<head th:replace="~{parts/header :: head}"></head>
 
-        <table>
+<body>
+<div th:replace="~{parts/header :: header}"></div>
+    <div class="container">
+        <h1>Mon espace administrateur : carte</h1>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="button" class="btn btn-primary">
+                <a th:href="@{/admin/carte/ajout}">Ajouter une carte</a>
+            </button>
+
+        </div>
+        <table class="table">
             <thead>
             <tr>
                 <th>Nom</th>
-                <th>Options</th>
+                <th>Voir</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="carte : ${cartes}">
-                <td th:text="${carte.name}"></td>
-                <td>
+                <th th:text="${carte.name}"></th>
+                <th>
                     <a th:href="@{/admin/carte/{id}(id=${carte.id})}">Voir</a>
+                </th>
+                <th>
                     <a th:href="@{/admin/carte/update/{id}(id=${carte.id})}">Modifier</a>
+                 </th>
+                <th>
                     <a th:href="@{/admin/carte/delete/{id}(id=${carte.id})}">Supprimer</a>
-                </td>
+                </th>
             </tr>
             </tbody>
         </table>
+    </div>
      </body>
 </html>

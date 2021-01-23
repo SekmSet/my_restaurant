@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; chars=UTF-8" />
-        <title>My Restaurant</title>
-    </head>
-    <body>
-        <header>
-            <ul>
-                <li><a th:href="@{/}">Accueil</a></li>
-                <li><a th:href="@{/carte}">Notre carte</a></li>
-                <li><a th:href="@{/plat/}">Nos plats</a></li>
-                <li><a th:href="@{/avis/ajout}">Ajouter un avis</a></li>
-                <li><a th:href="@{/admin}">Administrateur</a></li>
-            </ul>
-        </header>
-        <div>
-            <h1>Carte  <span th:text="${carte.name}"></span></h1>
-            <h2>Liste des menus : </h2>
-            <ul th:each="menu : ${carte.menu}">
-                <li th:text="${menu.name}"></li> <span><a th:href="@{/menu/{id}(id=${menu.id})}">Voir</a></span>
+<head th:replace="~{parts/header :: head}"></head>
+
+<body>
+    <div th:replace="~{parts/header :: header}"></div>
+    <div class="container">
+        <h1>Carte  <span th:text="${carte.name}"></span></h1>
+        <div class="card">
+            <div class="card-header">
+                <h2>Liste des menus : </h2>
+            </div>
+            <ul class="list-group list-group-flush" th:each="menu : ${carte.menu}">
+                <li class="list-group-item"><p><span th:text="${menu.name}"></span> <span><a class="btn btn-primary" th:href="@{/menu/{id}(id=${menu.id})}">Voir</a></span></p></li>
             </ul>
         </div>
-     </body>
+    </div>
+
+    <div th:replace="~{parts/footer :: footer}"></div>
+
+</body>
 </html>
