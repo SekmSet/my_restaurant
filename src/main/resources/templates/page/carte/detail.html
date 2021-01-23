@@ -11,7 +11,7 @@
                 <h2>Liste des menus : </h2>
             </div>
             <ul class="list-group list-group-flush" th:each="menu : ${carte.menu}">
-                <li class="list-group-item"><p><span th:text="${menu.name}"></span> <span><a th:href="@{/menu/{id}(id=${menu.id})}">Voir</a></span></p></li>
+                <li class="list-group-item"><p><span th:text="${menu.name}"></span> <span><a class="btn btn-primary" th:href="@{/menu/{id}(id=${menu.id})}">Voir</a></span></p></li>
             </ul>
         </div>
     </div>

@@ -11,7 +11,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${carte.name}"></h5>
-                            <p><button type="button" class="card-text btn btn-primary"><a th:href="@{/carte/{id}(id=${carte.id})}">Voir</a></button></p>
+                            <p><a class="card-text btn btn-primary" th:href="@{/carte/{id}(id=${carte.id})}">Voir</a></p>
                         </div>
                     </div>
                 </div>

@@ -9,6 +9,17 @@
     <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
     <script src="/libs/rateit/jquery.rateit.js"></script>
+
+    <style th:inline="css">
+        .btn {
+            background: #[[${colorButton}]];
+        }
+
+        a {
+            color: #[[${colorLink}]];
+        }
+    </style>
+
 </head>
 <body>
     <div th:fragment="header">
