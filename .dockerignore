@@ -1,0 +1,6 @@
+.git
+target
+docker
+libs
+.mvn
+/public/upload
