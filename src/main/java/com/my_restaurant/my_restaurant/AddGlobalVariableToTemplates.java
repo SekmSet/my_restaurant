@@ -18,10 +18,32 @@ public class AddGlobalVariableToTemplates {
 		Config config = findById();
 
 		if(config.getBoutons() == null || config.getBoutons().isBlank()){
-			config.setBoutons("00FF00");
+			config.setBoutons("0D9488");
 		}
 
 		return config.getBoutons();
+	}
+
+	@ModelAttribute("borderBoutons")
+	public String border() {
+		Config config = findById();
+
+		if(config.getBorderBoutons() == null || config.getBorderBoutons().isBlank()){
+			config.setBorderBoutons("0D9488");
+		}
+
+		return config.getBorderBoutons();
+	}
+
+	@ModelAttribute("body")
+	public String body() {
+		Config config = findById();
+
+		if(config.getBody() == null || config.getBody().isBlank()){
+			config.setBody("FAFAFA");
+		}
+
+		return config.getBody();
 	}
 
 	@ModelAttribute("colorLink")

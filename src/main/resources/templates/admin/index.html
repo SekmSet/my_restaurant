@@ -4,17 +4,21 @@
 
 <body>
     <div th:replace="~{parts/header :: header}"></div>
-    <div class="container">
-            <h1>Mon espace administrateur</h1>
+        <h1>Mon espace administrateur</h1>
+        <div class="flex">
+            <div class="container">
+                <div class="config-menu">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a th:href="@{/admin/config/detail/1}">Voir ma config</a></li>
+                        <li class="list-group-item"><a th:href="@{/admin/carte}">Gérer ma carte</a></li>
+                        <li class="list-group-item"><a th:href="@{/admin/menu}">Gêrer mes menus</a></li>
+                        <li class="list-group-item"><a th:href="@{/admin/plat}">Gêrer mes plats</a></li>
+                        <li class="list-group-item"><a th:href="@{/admin/avis}">Voir tous les avis</a></li>
+                    </ul>
+                </div>
+            </div>
 
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a th:href="@{/admin/config/detail/1}">Voir ma config</a></li>
-                <li class="list-group-item"><a th:href="@{/admin/carte}">Gérer ma carte</a></li>
-                <li class="list-group-item"><a th:href="@{/admin/menu}">Gêrer mes menus</a></li>
-                <li class="list-group-item"><a th:href="@{/admin/plat}">Gêrer mes plats</a></li>
-                <li class="list-group-item"><a th:href="@{/admin/avis}">Voir tous les avis</a></li>
-            </ul>
-    </div>
+        </div>
 
     <div th:replace="~{parts/footer :: footer}"></div>
 

@@ -6,8 +6,8 @@
     <div th:replace="~{parts/header :: header}"></div>
     <div class="container">
         <h1>Créer un nouveau plat</h1>
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <a class="btn btn-primary" href="https://allergies.afpral.fr/allergie/en-savoir-plus-sur-les-allergies/alimentaires/89-liste-des-14-allergenes-alimentaires-majeurs" target="_blank">Liste des alergènes</a>
+        <div class="d-grid gap-2 col-6 mx-auto div-la">
+            <a class="liste-alergene" href="https://allergies.afpral.fr/allergie/en-savoir-plus-sur-les-allergies/alimentaires/89-liste-des-14-allergenes-alimentaires-majeurs" target="_blank">Liste des alergènes</a>
         </div>
 
         <form action="#" th:action="@{/admin/plat/ajout}" th:object="${plat}" method="post" enctype="multipart/form-data" >

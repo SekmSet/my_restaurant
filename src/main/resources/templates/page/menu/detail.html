@@ -11,7 +11,9 @@
                 <p>Prix : <span th:text="${menu.prix}"></span>€</p>
             </div>
             <ul class="list-group list-group-flush" th:each="plat: ${menu.plat}">
-                <li class="list-group-item"><p><span th:text="${plat.name}"></span> <span><a th:href="@{/plat/{id}(id=${plat.id})}">Voir</a></span></p></li>
+                <li class="list-group-item">
+                    <p><span th:text="${plat.name}"></span> <span><a th:href="@{/plat/{id}(id=${plat.id})}">Voir</a></span></p>
+                </li>
             </ul>
         </div>
     </div>

@@ -4,40 +4,44 @@
 
 <body>
     <div th:replace="~{parts/header :: header}"></div>
-    <div class="container">
-        <h1>Ajouter un avis : </h1>
-        <h5>* champs obligatoire</h5>
-        
-        <form action="#" th:action="@{/avis/ajout}" th:object="${avis}" method="post">
-            <div class="input-group flex-nowrap">
-                <label class="input-group-text" for="name" id="addon-wrapping">Mon nom*</span></label>
-                <input type="text" class="form-control" th:field="*{name}" id="name" placeholder="Arthur" aria-label="Username" aria-describedby="addon-wrapping">
-                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-            </div>
+    <div class="flex avis">
+        <div>
+            <h1>Ajouter un avis : </h1>
+            <h5>* champs obligatoire</h5>
+        </div>
 
-            <div class="input-group flex-nowrap">
-                <label class="input-group-text" for="email" id="addon-wrapping">Mon email</span> </label>
-                <input type="text" class="form-control" th:field="*{email}" id="email"  aria-label="mon-email@gmail.com" aria-describedby="addon-wrapping">
-                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-            </div>
+        <div class="flex avis-form">
+            <form action="#" th:action="@{/avis/ajout}" th:object="${avis}" method="post">
+                <div class="input-group flex-nowrap">
+                    <label class="input-group-text" for="name" id="addon-wrapping">Mon nom*</span></label>
+                    <input type="text" class="form-control" th:field="*{name}" id="name" placeholder="Arthur" aria-label="Username" aria-describedby="addon-wrapping">
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                </div>
 
-            <div class="input-group flex-nowrap">
-                <label class="input-group-text" for="note" id="addon-wrapping">Ma note*</span> </label>
-<!--                <input type="number" class="form-control" th:field="*{note}" id="note" aria-describedby="addon-wrapping">-->
-                <span th:if="${#fields.hasErrors('note')}" th:errors="*{note}"></span>
+                <div class="input-group flex-nowrap">
+                    <label class="input-group-text" for="email" id="addon-wrapping">Mon email</span> </label>
+                    <input type="text" class="form-control" th:field="*{email}" id="email"  aria-label="mon-email@gmail.com" aria-describedby="addon-wrapping">
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                </div>
 
-                <input type="range" min="0" max="5" th:field="*{note}" step="1" id="note">
-                <div class="rateit" data-rateit-backingfld="#note"></div>
-            </div>
+                <div class="input-group flex-nowrap">
+                    <label class="input-group-text" for="note" id="addon-wrapping">Ma note*</span> </label>
+                    <!--                <input type="number" class="form-control" th:field="*{note}" id="note" aria-describedby="addon-wrapping">-->
+                    <span th:if="${#fields.hasErrors('note')}" th:errors="*{note}"></span>
 
-            <div class="input-group">
-                <label for="message" class="input-group-text">Mon message</label>
-                <textarea class="form-control" aria-label="With textarea" th:field="*{message}"  id="message"></textarea>
-            </div>
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <input class="btn btn-primary" type="submit" value="Créer">
-            </div>
-        </form>
+                    <input type="range" min="0" max="5" th:field="*{note}" step="1" id="note">
+                    <div class="rateit" data-rateit-backingfld="#note"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="message" class="input-group-text">Mon message</label>
+                    <textarea class="form-control" aria-label="With textarea" th:field="*{message}"  id="message"></textarea>
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <input class="btn btn-primary" type="submit" value="Créer">
+                </div>
+            </form>
+        </div>
     </div>
 
     <div th:replace="~{parts/footer :: footer}"></div>

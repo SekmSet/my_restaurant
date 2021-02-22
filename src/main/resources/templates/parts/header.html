@@ -5,14 +5,22 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:href="@{/styles/main.css}" rel="stylesheet" />
     <link rel="stylesheet" href="/libs/rateit/rateit.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&display=swap" rel="stylesheet">
     <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
     <script src="/libs/rateit/jquery.rateit.js"></script>
 
     <style th:inline="css">
+        body{
+            background-color: #[[${body}]];
+        }
+
         .btn {
             background: #[[${colorButton}]];
+            border-color: #[[${borderBoutons}]];
         }
 
         a {

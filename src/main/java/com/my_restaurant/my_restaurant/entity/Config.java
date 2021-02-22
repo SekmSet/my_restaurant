@@ -44,6 +44,10 @@ public class Config {
 
     private String boutons;
 
+    private String borderBoutons;
+
+    private String body;
+
     //    @NotBlank(message = "La bannière de votre site est requise")
     private String photo;
 
@@ -154,6 +158,15 @@ public class Config {
         this.boutons = boutons;
     }
 
+
+  public String getBorderBoutons() {
+        return borderBoutons;
+    }
+
+    public void setBorderBoutons(String borderBoutons) {
+        this.borderBoutons = borderBoutons;
+    }
+
     @Transient
     public String getPhotosImagePath() {
         if (photo == null) {
@@ -161,5 +174,13 @@ public class Config {
         }
 
         return "/" + UPLOAD_PATH + id + "/" + photo;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }

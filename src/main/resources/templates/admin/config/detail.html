@@ -9,18 +9,18 @@
         <h1>Detail de ma config </h1>
         <div class="card">
             <div class="card-body">
-                <p>Nom : <span th:text="${config.name}"></span></p>
-                <p>Email : <span th:text="${config.email}"></span></p>
-                <p>URL : <span th:text="${config.url}"></span></p>
-                <p>Téléphone fix : <span th:text="${config.numberFix}"></span></p>
-                <p>Téléphone portable : <span th:text="${config.numberPort}"></span></p>
-                <p>Adresse : <span th:text="${config.adresse}"></span></p>
-                <p>Ville : <span th:text="${config.ville}"></span></p>
-                <p>Code postale : <span th:text="${config.cp}"></span></p>
+                <p><span class="info-footer">Nom</span> : <span th:text="${config.name}"></span></p>
+                <p><span class="info-footer">Email</span> : <span th:text="${config.email}"></span></p>
+                <p><span class="info-footer">URL</span> : <span th:text="${config.url}"></span></p>
+                <p><span class="info-footer">Téléphone fix</span> : <span th:text="${config.numberFix}"></span></p>
+                <p><span class="info-footer">Téléphone portable</span> : <span th:text="${config.numberPort}"></span></p>
+                <p><span class="info-footer">Adresse</span> : <span th:text="${config.adresse}"></span></p>
+                <p><span class="info-footer">Ville</span> : <span th:text="${config.ville}"></span></p>
+                <p><span class="info-footer">Code postale</span> : <span th:text="${config.cp}"></span></p>
             </div>
         </div>
 
-        <img th:src="${config.photosImagePath}" alt="ma bannière"/>
+        <img class="d-block w-100" th:src="${config.photosImagePath}" alt="ma bannière"/>
 
         <div class="d-grid gap-2 col-6 mx-auto">
             <a class="btn btn-primary" th:href="@{/admin/config/edit/1}">Editer ma config</a>
